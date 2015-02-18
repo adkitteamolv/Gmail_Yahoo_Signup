@@ -23,10 +23,10 @@ public class Inint {
 						
  // GMAIL SIGNUP
 		
-	/*	driver= Selenium_Constructs.startup_Driver();
+		driver= Selenium_Constructs.startup_Driver();
 		
 		GmailSignupMethodCall gmailSignupObject=new GmailSignupMethodCall(driver);
-		gmailSignupObject.callGmailSignupMethod();*/
+		gmailSignupObject.callGmailSignupMethod();
 		
 		
 		
@@ -46,7 +46,7 @@ public class Inint {
 //		Actions newTab = new Actions(driver);
 //	    newTab.sendKeys(Keys.CONTROL + "t").perform();
 		
-//		 element = driver.findElement(By.cssSelector("body"));
+//		element = driver.findElement(By.cssSelector("body"));
 //		Actions actionOpenLinkInNewTab = new Actions(driver);
 //		actionOpenLinkInNewTab.moveToElement(element).keyDown(Keys.CONTROL).click(element).keyUp(Keys.CONTROL).perform();
 		

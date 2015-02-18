@@ -2,10 +2,12 @@ package com.SeleniumDriver.Pages;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -30,11 +32,15 @@ public class Yahoo_SignUp
 	By month = By.xpath(".//*[@id='month']");
 	By year = By.xpath(".//*[@id='year']");
 	
-	By gender = By.xpath(".//*[@id='male']");
+	By gender = By.xpath(".//input[@id='male']");
 	
 	By mobileresidence = By.xpath("//input[@id='mobile-rec']");
 	
 	By relation = By.xpath("//input[@id='relationship']");
+	
+	By clickCreate = By.xpath(".//*[@id='info-form']/div/div[9]/input");
+	
+	
 	
 	public Yahoo_SignUp(WebDriver driver)
 	{
@@ -76,7 +82,7 @@ public class Yahoo_SignUp
 	
 	public void enterYahooId()
 	{
-		CharSequence[] yahooid={"adam1234"};
+		CharSequence[] yahooid={"adam29111988"};
 		new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(enterYahooid));
 		driver.findElement(enterYahooid).sendKeys(yahooid);
 		
@@ -230,10 +236,22 @@ public class Yahoo_SignUp
 	public void selectGender()
 	{
 		
-		//new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(gender));
+		//new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(gender));
 		//driver.findElement(gender).click();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		WebElement element = driver.findElement(By.id("male"));
+
+		Actions actions = new Actions(driver);
+
+		actions.moveToElement(element).click().perform();
 		
-		driver.findElement(By.id("male")).click();
+		
+		/*List<WebElement> gender = driver.findElements(By.id("male"));
+		for(int i=0;i<gender.size();i++) {
+			gender.get(0).click();
+			// System.out.println(gender.get(0).getAttribute("id"));
+		}*/
+		
 	}
 	
 	
@@ -253,6 +271,13 @@ public class Yahoo_SignUp
 		new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(relation));
 		driver.findElement(relation).sendKeys(relationship);
 		
+	}
+	
+	public void clickCreateAccount_Button()
+	{
+		new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(clickCreate));
+		driver.findElement(clickCreate).click();
+			
 	}
 	
 	

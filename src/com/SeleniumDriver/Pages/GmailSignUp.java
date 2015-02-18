@@ -1,14 +1,12 @@
 package com.SeleniumDriver.Pages;
 
-import java.util.Iterator;
-import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.SeleniumDriver.Model.MainForm;
 
 public class GmailSignUp {
 	
@@ -32,13 +30,15 @@ public class GmailSignUp {
 	By phoneNumber = By.xpath("//input[@id='RecoveryPhoneNumber']");
 	By recoveryEmailValue= By.xpath("//input[@id='RecoveryEmailAddress']");
 	By skipCaptchaValue= By.xpath("//input[@id='SkipCaptcha']");
-	By termsOfService= By.xpath("//input[@id='TermsOfService']");
+	By termsOfService= By.xpath("//*[@id='TermsOfService']");
 	By nextStep= By.xpath("//input[@id='submitbutton']");
 	
 	By clickContinueButton= By.xpath("//input[@id='next-button']");
 	
 	
 	WebDriver driver = null;
+	
+	MainForm frm;
 	
 	public GmailSignUp(WebDriver driver){
 		
@@ -57,41 +57,41 @@ public class GmailSignUp {
 		driver.findElement(createAnAccount).click();
 	}
 	
-	public void enterFirstName(){
+	public void enterFirstName(String Fname){
 		
-		CharSequence[] fName={"Amol"};
+		//CharSequence[] fName={"Amol"};
 		
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(firstName));
-		driver.findElement(firstName).sendKeys(fName);
+		driver.findElement(firstName).sendKeys(Fname);
 	}
 	
-	public void enterLastName(){
+	public void enterLastName(String lName){
 		
-		CharSequence[] lName={"Adkitte"};
+		//CharSequence[] lName={"Adkitte"};
 		
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(lastName));
 		driver.findElement(lastName).sendKeys(lName);
 	}
 	
-	public void enterEmailAddress(){
+	public void enterEmailAddress(String emailAddressValue){
 		
-		CharSequence[] emailAddressValue={"adamol318759"};
+		//CharSequence[] emailAddressValue={"adamol318759"};
 		
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(emailAddress));
 		driver.findElement(emailAddress).sendKeys(emailAddressValue);
 	}
 	
-	public void enterPassword(){
+	public void enterPassword(String passwdEnter){
 		
-		CharSequence[] passwdEnter={"OmSai$29A"};
+		//CharSequence[] passwdEnter={"OmSai$29A"};
 		
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(password));
 		driver.findElement(password).sendKeys(passwdEnter);		
 	}
 	
-	public void enterConfirmPassword(){
+	public void enterConfirmPassword(String confirmPasswdEnter){
 		
-		CharSequence[] confirmPasswdEnter={"OmSai$29A"};
+		//CharSequence[] confirmPasswdEnter={"OmSai$29A"};
 		
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(confirmPassword));
 		driver.findElement(confirmPassword).sendKeys(confirmPasswdEnter);		
@@ -135,21 +135,21 @@ public class GmailSignUp {
 	}
 	
 	
-	public void enterDay() {
+	public void enterDay(String day) {
 		
 	//	CharSequence[] birthDayValue={"29"};
 		
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(birthDay));
 		//driver.findElement(birthDay).click();
-		driver.findElement(birthDay).sendKeys("29");
+		driver.findElement(birthDay).sendKeys(day);
 	}
 	
-	public void enterYear(){
+	public void enterYear(String year){
 		
 		//CharSequence[] birthYearValue={"1988"};
 		
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(birthYear));
-		driver.findElement(birthYear).sendKeys("1988");
+		driver.findElement(birthYear).sendKeys(year);
 	}
 	
 	public void selectGenderValue(){
@@ -158,7 +158,20 @@ public class GmailSignUp {
 		
 		driver.findElement(selectGender).click();
 		
-		driver.findElement(By.xpath("//div[@id=':f']")).click();
+		
+		/*String str = frm.getGender().toLowerCase().toString();
+		System.out.println(str);
+		
+		if (str.equals("male")){
+			driver.findElement(By.xpath("//div[@id=':f']")).click();	
+			
+		}
+		else{
+			
+			driver.findElement(By.xpath(".//*[@id=':e']/div")).click();
+		}*/
+				
+		
 		
 	}
 	
@@ -185,21 +198,21 @@ public class GmailSignUp {
 		
 	}
 	
-	public void enterPhoneNumber(){
+	public void enterPhoneNumber(String phone){
 	
-		CharSequence[] phone = {"9960277546"};
+		//CharSequence[] phone = {"9960277546"};
 		
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(phoneNumber));
 		driver.findElement(phoneNumber).sendKeys(phone);
 		
 	}
 	
-	public void enterRecoveryEmail(){
+	public void enterRecoveryEmail(String currentEmail){
 		
-		CharSequence[] recoveryEmail={"adkitteamolv@gmail.com"};
+		//CharSequence[] recoveryEmail={"adkitteamolv@gmail.com"};
 		
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(recoveryEmailValue));
-		driver.findElement(recoveryEmailValue).sendKeys(recoveryEmail);
+		driver.findElement(recoveryEmailValue).sendKeys(currentEmail);
 	}
 	
 	public void clickSkipCaptcha(){
@@ -226,6 +239,43 @@ public class GmailSignUp {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(clickContinueButton));
 		
 		driver.findElement(clickContinueButton).click();
+		//driver.navigate().back();
 	}
-
+	
+	
+	
+	/*public void clearAllfields(){
+		
+		driver.findElement(firstName).clear();
+		driver.findElement(lastName).clear();
+		driver.findElement(emailAddress).clear();
+		
+		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+		driver.findElement(recoveryEmailValue).clear();
+		driver.findElement(phoneNumber).clear();
+		//driver.findElement(selectGender).clear();
+		driver.findElement(birthYear).clear();
+		driver.findElement(birthDay).clear();
+		//driver.findElement(birthMonth).clear();
+		driver.findElement(confirmPassword).clear();
+		driver.findElement(password).clear();
+		
+		if (driver.findElement(termsOfService).isSelected()){
+			
+			
+			System.out.println("Check is selected unchecking it");
+			driver.findElement(By.xpath("//*[@id='TermsOfService']")).click();
+			
+		}
+		else{
+			
+			System.out.println("Check is unchecked");
+		}
+		
+		
+		driver.findElement(skipCaptchaValue).click();
+				
+	}
+*/
 }

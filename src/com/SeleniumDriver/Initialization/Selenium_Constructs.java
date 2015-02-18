@@ -10,7 +10,7 @@ public class Selenium_Constructs {
 	
 	public static WebDriver startup_Driver(){
 		
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\318759\\Desktop\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\318759\\Desktop\\workspace\\PracticeSelenium\\chromedriver_win32\\chromedriver.exe");
 		
 		driver = new ChromeDriver();
 		

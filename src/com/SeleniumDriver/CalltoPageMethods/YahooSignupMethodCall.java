@@ -22,19 +22,28 @@ public class YahooSignupMethodCall {
 	
 	yahooSignUpObject.navigateToYahoo();
 	yahooSignUpObject.clickCreateAccountbutton();
-	/*yahooSignUpObject.enterFirstNAme();
+	
+	yahooSignUpObject.enterFirstNAme();
 	yahooSignUpObject.enterLastNAme();
 	yahooSignUpObject.enterYahooId();
 	yahooSignUpObject.enterPassword();
 	yahooSignUpObject.showPassword();
-	yahooSignUpObject.enterMobileNumber();*/
-	yahooSignUpObject.selectGender();
-	/*yahooSignUpObject.enterResidenceMobile();
-	yahooSignUpObject.enterRelationship();
+	yahooSignUpObject.enterMobileNumber();
 	yahooSignUpObject.selectDay();
 	yahooSignUpObject.selectMonth();
-	yahooSignUpObject.selectYear();*/
+	yahooSignUpObject.selectYear();
+	yahooSignUpObject.selectGender();
+	yahooSignUpObject.enterResidenceMobile();
+	yahooSignUpObject.enterRelationship();
+	/*try {
+		Thread.sleep(500);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}*/
+	yahooSignUpObject.clickCreateAccount_Button();
 	
+	driver.quit();
 	}
 	
 	
